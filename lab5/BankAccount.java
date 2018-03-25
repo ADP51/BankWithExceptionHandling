@@ -51,9 +51,6 @@ public abstract class BankAccount {
 		} catch (InputMismatchException exception) {
 			System.out.println("That is not an acceptable input. Please start over.");
 			return false;
-		} catch (Exception unknownException) {
-			System.out.println("Unknown Exception.");
-			return false;
 		}
 	}
 

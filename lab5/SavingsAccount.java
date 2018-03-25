@@ -15,28 +15,26 @@ public class SavingsAccount extends BankAccount {
 		boolean check = super.addBankAccount();
 		Scanner scan = new Scanner(System.in);
 		if (check) {
-			System.out.println("What is the interest rate for this account?");
+			System.out.println("What is the interest rate for this account? (0 - 1)");
 				try {
 					this.monthlyInterestRate = scan.nextDouble();
+					if (monthlyInterestRate > 1 || monthlyInterestRate < 0) {
+						System.out.println("Interest rate needs to be between 0 and 1.");
+					}
 				} catch (InputMismatchException e) {
 					System.out.println("That is not an acceptable input.");
-				} catch (Exception unknownE) {
-					System.out.println("Unknown Exception");
-					return false;
 				}
+
 			//loops through until an appropriate input for minBalance is input.
-			System.out.println("What is the minimum balance for this account?");
+			System.out.println("What is the minimum balance for this account?(5 - 100$)");
 				try {
 					minBalance = scan.nextDouble();
 					if (minBalance < 5 || minBalance > 100) {
-						throw new Exception();
+						System.out.println("That is not an appropriate minimum balance.");
 					}
 				} catch (InputMismatchException e) {
 					scan.nextLine();
 					System.out.println("Please enter a number.");
-				} catch (Exception e) {
-					scan.nextLine();
-					System.out.println("Please enter an amount between 5$ and 100$");
 				}
 			return true;
 		}

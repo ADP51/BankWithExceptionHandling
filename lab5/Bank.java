@@ -22,7 +22,6 @@ public class Bank {
 			return;
 		}
 
-		try {
 			System.out.println("Please enter details for account " + numAccounts + ".");
 			System.out.println("What kind of account is this? Chequing 'c' or Savings 's'?");
 			String type = sc.next();
@@ -37,12 +36,11 @@ public class Bank {
 
 			if (accounts[numAccounts].addBankAccount()) {
 				numAccounts++;
+				System.out.println(numAccounts);
 			} else {
 				System.out.println("Oops something went wrong. Account creation did not work.");
 			}
-		} catch (NullPointerException e) {
-			System.out.println("Null pointer exception.");
-		}
+
 	}
 
 	public int findAccount() {
@@ -78,14 +76,10 @@ public class Bank {
 			}
 		} catch (InputMismatchException e) {
 			System.out.println("That is not an appropriate input.");
-		} catch (Exception e) {
-			System.out.println("Problem finding account.");
-			System.out.println("Unknown Error");
 		}
 	}
 
 	public void monthlyUpdate() {
-		try {
 			for (BankAccount i : accounts) {
 				if (i == null) {
 					break;
@@ -93,8 +87,5 @@ public class Bank {
 					i.calculateAndUpdateBalance();
 				}
 			}
-		} catch (NullPointerException e) {
-			System.out.println("Null Pointer exception update did not work.");
-		}
 	}
 }
