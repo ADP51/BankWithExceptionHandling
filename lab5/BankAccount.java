@@ -73,17 +73,12 @@ public abstract class BankAccount {
 		this.balance += dep;
 	}
 
-	public void withdraw(double amount) {
-		try {
+	public void withdraw(double amount) throws InsufficientFundsException {
 			if (amount > this.balance) {
 				throw new InsufficientFundsException();
 			} else {
 				this.balance -= amount;
 			}
-		} catch (InsufficientFundsException e) {
-			System.err.println("Account Number: " + this.accNumber);
-			e.printStackTrace();
-		}
 	}
 
 	public long getAccountNumber() {

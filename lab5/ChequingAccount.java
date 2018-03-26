@@ -46,7 +46,7 @@ public class ChequingAccount extends BankAccount {
 				throw new OverdrawnAccountException();
 			}
 		} catch (OverdrawnAccountException e) {
-			System.err.print("This account is overdrawn.");
+			System.err.print("This account: " + this.accNumber + " is overdrawn.");
 		}
 	}
 }

@@ -26,6 +26,10 @@ public class MainMenu {
 					bank.displayAccount();
 					break;
 
+				case 'l':
+					bank.listAccounts();
+					break;
+
 				case 'u':
 					bank.updateAccount();
 					break;
@@ -51,6 +55,7 @@ public class MainMenu {
 		System.out.println("Enter your choice:");
 		System.out.println("a: Add new account");
 		System.out.println("d: Display account details");
+		System.out.println("l: List all account details");
 		System.out.println("u: Update account balance");
 		System.out.println("m: Month-end update");
 		System.out.println("q: Quit");

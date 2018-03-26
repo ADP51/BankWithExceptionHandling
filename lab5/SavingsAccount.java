@@ -59,7 +59,7 @@ public class SavingsAccount extends BankAccount {
 				throw new OverdrawnAccountException();
 			} catch (OverdrawnAccountException e) {
 				e.printStackTrace();
-				System.err.println("Account Number: " + this.accNumber);
+				System.err.println("Account Number: " + this.accNumber + " is overdrawn.");
 			}
 		}
 	}

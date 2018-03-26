@@ -43,7 +43,6 @@ public class Bank {
 		} catch (Exception e) {
 			System.err.println("Unknown exception.");
 		}
-
 	}
 
 	public int findAccount() {
@@ -81,8 +80,8 @@ public class Bank {
 	}
 
 	public void updateAccount() {
+		int indexNum = findAccount();
 		try {
-			int indexNum = findAccount();
 			System.out.println("Please enter an amount.");
 			double adjust = sc.nextDouble();
 			if (adjust < 0) {
@@ -97,6 +96,8 @@ public class Bank {
 		} catch (ArrayIndexOutOfBoundsException ae) {
 			System.err.println("That account number does not exist.");
 			sc.nextLine();
+		} catch (InsufficientFundsException e) {
+			System.err.println("Account Number: " + accounts[indexNum].accNumber + " has insufficient funds.");
 		}
 	}
 
@@ -112,6 +113,25 @@ public class Bank {
 		} catch (Exception e) {
 			System.err.print("Unknown Exception occurred in monthly update.");
 		}
+	}
+
+	public void listAccounts() {
+		try {
+			for (int i = 0; i < accounts.length; i++) {
+				if (accounts[i] == null) {
+					break;
+				} else {
+					System.out.println("Account Number: " + accounts[i].accNumber + " Name: " + accounts[i].accHolder.getName());
+				}
+			}
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.err.println("Index out of bounds exception.");
+			return;
+		} catch (NullPointerException e) {
+			System.err.println("Null pointer exception.");
+			return;
+		}
+		System.out.println("");
 	}
 
 }
