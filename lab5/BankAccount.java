@@ -55,8 +55,8 @@ public abstract class BankAccount {
 	}
 
 	public String toString() {
-		return accType + ": " + accNumber + "\n" + "Balance: " + money.format(balance) + "$" + "\n" + "Name: "
-				+ accHolder.getName() + "\n" + accHolder.toString();
+		return this.accType + ": " + this.accNumber + "\n" + "Balance: " + money.format(this.balance) + "$" + "\n" + "Name: "
+				+ this.accHolder.getName();
 	}
 
 	public void deposit(double dep) {

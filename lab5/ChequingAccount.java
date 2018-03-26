@@ -13,6 +13,7 @@ public class ChequingAccount extends BankAccount {
 
 	protected double monthlyFee;
 	private Scanner scan = new Scanner(System.in);
+	DecimalFormat money = new DecimalFormat("$###,###.##");
 
 	public boolean addBankAccount() {
 		boolean check = super.addBankAccount();
@@ -33,10 +34,7 @@ public class ChequingAccount extends BankAccount {
 	}
 
 	public String toString() {
-		super.toString();
-
-		DecimalFormat money = new DecimalFormat("$###,###.##");
-		return "Minimum Monthly Interest Fee: " + money.format(this.monthlyFee);
+		return super.toString() + "\n" + "Monthly Fee: " + money.format(this.monthlyFee);
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package lab5;
 
+import java.text.NumberFormat;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.text.DecimalFormat;
@@ -10,6 +11,9 @@ import java.text.DecimalFormat;
 public class SavingsAccount extends BankAccount {
 	protected double monthlyInterestRate;
 	protected double minBalance;
+
+	DecimalFormat money = new DecimalFormat("$###,###.##");
+	NumberFormat percent = NumberFormat.getPercentInstance();
 
 	public boolean addBankAccount() {
 		boolean check = super.addBankAccount();
@@ -50,11 +54,7 @@ public class SavingsAccount extends BankAccount {
 	}
 
 	public String toString() {
-		super.toString();
-
-		DecimalFormat money = new DecimalFormat("$###,###.##");
-		DecimalFormat percentile = new DecimalFormat("%###.##");
-		return "Interest Rate: " + percentile.format(this.monthlyInterestRate) + "\n" + "Minimum Balance: " + money.format(this.minBalance);
+		return super.toString() + "\n" + "Interest Rate: " + percent.format(this.monthlyInterestRate) + "\n" + "Minimum Balance: " + money.format(this.minBalance);
 	}
 
 
