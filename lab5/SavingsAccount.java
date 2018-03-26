@@ -23,22 +23,26 @@ public class SavingsAccount extends BankAccount {
 				try {
 					this.monthlyInterestRate = scan.nextDouble();
 					if (monthlyInterestRate > 1 || monthlyInterestRate < 0) {
-						System.out.println("Interest rate needs to be between 0 and 1.");
+						System.err.print("Interest rate needs to be between 0 and 1.");
 					}
 				} catch (InputMismatchException e) {
-					System.out.println("That is not an acceptable input.");
+					System.err.print("That is not an acceptable input.");
 				}
 
 			//loops through until an appropriate input for minBalance is input.
 			System.out.println("What is the minimum balance for this account?(5 - 100$)");
 				try {
-					minBalance = scan.nextDouble();
-					if (minBalance < 5 || minBalance > 100) {
+					double balance = scan.nextDouble();
+					if (balance < 5 || balance > 100) {
 						System.out.println("That is not an appropriate minimum balance.");
+						return false;
+					} else {
+						minBalance = balance;
 					}
 				} catch (InputMismatchException e) {
 					scan.nextLine();
-					System.out.println("Please enter a number.");
+					System.err.print("Please enter a number.");
+					return false;
 				}
 			return true;
 		}
@@ -50,13 +54,19 @@ public class SavingsAccount extends BankAccount {
 	public void calculateAndUpdateBalance() {
 		if (this.balance > minBalance) {
 			this.balance += (this.balance * (monthlyInterestRate / 100));
+		} else {
+			try {
+				throw new OverdrawnAccountException();
+			} catch (OverdrawnAccountException e) {
+				e.printStackTrace();
+				System.err.println("Account Number: " + this.accNumber);
+			}
 		}
 	}
 
 	public String toString() {
-		return super.toString() + "\n" + "Interest Rate: " + percent.format(this.monthlyInterestRate) + "\n" + "Minimum Balance: " + money.format(this.minBalance);
+		return super.toString() + "\n" + "Interest Rate: " + percent.format(this.monthlyInterestRate) + "\n" + "Minimum Balance: " + money.format(this.minBalance) + "\n";
 	}
-
 
 }
 

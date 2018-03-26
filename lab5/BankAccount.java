@@ -13,7 +13,7 @@ public abstract class BankAccount {
 	protected double balance;
 	protected String accType;
 
-	DecimalFormat money = new DecimalFormat("###,###.##");
+	DecimalFormat money = new DecimalFormat("$###,###.##");
 
 	public boolean addBankAccount() {
 		Scanner scanner = new Scanner(System.in);
@@ -22,7 +22,11 @@ public abstract class BankAccount {
 			System.out.println("Enter the account number");
 			int num = scanner.nextInt();
 			if (searchAccounts(num) == -1) {
-				this.accNumber = num;
+				if (num < 100 || num > 999) {
+					throw new InvalidAccountNumberException();
+				} else {
+					this.accNumber = num;
+				}
 			} else {
 				System.out.println("That account number already exists.");
 				return false;
@@ -49,13 +53,19 @@ public abstract class BankAccount {
 			this.accType = scanner.next();
 			return true;
 		} catch (InputMismatchException exception) {
-			System.out.println("That is not an acceptable input. Please start over.");
+			System.err.println("That is not an acceptable input. Please start over.");
+			return false;
+		} catch (InvalidAccountNumberException e) {
+			System.err.println("Account numbers need to be between 100 and 999.");
+			return false;
+		} catch (Exception e) {
+			System.err.println("Unknown Error.");
 			return false;
 		}
 	}
 
 	public String toString() {
-		return this.accType + ": " + this.accNumber + "\n" + "Balance: " + money.format(this.balance) + "$" + "\n" + "Name: "
+		return this.accType + ": " + this.accNumber + "\n" + "Balance: " + money.format(this.balance) + "\n" + "Name: "
 				+ this.accHolder.getName();
 	}
 
@@ -64,7 +74,16 @@ public abstract class BankAccount {
 	}
 
 	public void withdraw(double amount) {
-		this.balance -= amount;
+		try {
+			if (amount > this.balance) {
+				throw new InsufficientFundsException();
+			} else {
+				this.balance -= amount;
+			}
+		} catch (InsufficientFundsException e) {
+			System.err.println("Account Number: " + this.accNumber);
+			e.printStackTrace();
+		}
 	}
 
 	public long getAccountNumber() {

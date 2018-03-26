@@ -24,10 +24,11 @@ public class ChequingAccount extends BankAccount {
 				monthlyFee = scan.nextDouble();
 				return true;
 			} catch (InputMismatchException e) {
-				System.out.println("That is not an acceptable input.");
+				System.err.print("That is not an acceptable input.");
+				scan.nextLine();
 			} catch (Exception unknownE) {
-				System.out.println("Unknown Exception");
-				return false;
+				System.err.print("Unknown Exception");
+				scan.nextLine();
 			}
 		}
 		return false;
@@ -45,7 +46,7 @@ public class ChequingAccount extends BankAccount {
 				throw new OverdrawnAccountException();
 			}
 		} catch (OverdrawnAccountException e) {
-			System.out.println("This account is overdrawn.");
+			System.err.print("This account is overdrawn.");
 		}
 	}
 }
