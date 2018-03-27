@@ -1,9 +1,30 @@
+/*
+ * Student Name: Andrew Palmer
+ * Course Number: CST8132
+ * Section: 311
+ * File Name: MainMenu.java
+ */
+
 package lab5;
 
 import java.util.Scanner;
 
+/**
+ * This is the Main class which is used to give the user options and then call methods based upon the
+ * user input. This class also contains the main method.
+ *
+ * @author Angela Giddings, Andrew Palmer
+ * @version 1.1
+ * @see Bank
+ */
 public class MainMenu {
 
+	/**
+	 * The main method which prints out the options for the user to perform tasks such as create account.
+	 * Then calls the appropriate methods to complete the tasks.
+	 *
+	 * @param args These are command line arguments.
+	 */
 	public static void main(String[] args) {
 
 		Bank bank = new Bank("My bank", 10);
@@ -50,6 +71,9 @@ public class MainMenu {
 		input.close();
 	}
 
+	/**
+	 * The displayMenu method lists all the options for the user to give commands.
+	 */
 	public static void displayMenu() {
 
 		System.out.println("Enter your choice:");
