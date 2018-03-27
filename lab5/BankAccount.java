@@ -69,7 +69,13 @@ public abstract class BankAccount {
 			}
 
 			System.out.println("What is the opening balance?");
-			this.balance = scanner.nextDouble();
+			double bal = scanner.nextDouble();
+			if (bal <= 0) {
+				System.err.println("Starting balance must be more than 0");
+				return false;
+			} else {
+				this.balance = bal;
+			}
 
 			System.out.println("What is the customers first name?");
 			String fname = scanner.next();
@@ -79,6 +85,13 @@ public abstract class BankAccount {
 
 			System.out.println("What is the customers email address?");
 			String email = scanner.next();
+
+			//Checks to make sure input is a valid email.
+			boolean emailCheck = email.contains("@") && email.contains(".");
+			if (!emailCheck) {
+				System.err.println("That is not an appropriate email address.");
+				return false;
+			}
 
 			System.out.println("What is the customers phone number?");
 			long phone = scanner.nextLong();
@@ -148,4 +161,7 @@ public abstract class BankAccount {
 	 * This is the abstract method that all child classes must implement.
 	 */
 	public abstract void calculateAndUpdateBalance();
+
 }
+
+

@@ -68,7 +68,7 @@ public class Bank {
 		}
 
 		try {
-			System.out.println("Please enter details for account " + numAccounts + ".");
+			System.out.println("Please enter details for account @ position " + numAccounts + ".");
 			System.out.println("What kind of account is this? Chequing 'c' or Savings 's'?");
 			String type = sc.next();
 			if (type.equalsIgnoreCase("c") || type.equalsIgnoreCase("Chequing")) {
@@ -97,9 +97,14 @@ public class Bank {
 	 * @return returns the outcome of the searchAccounts method.
 	 */
 	public int findAccount() {
-		System.out.println("What is the account number?");
-		int accToFind = sc.nextInt();
-		return searchAccounts(accToFind);
+		try {
+			System.out.println("What is the account number?");
+			int accToFind = sc.nextInt();
+			return searchAccounts(accToFind);
+		} catch (InputMismatchException e) {
+			sc.nextLine();
+			return -1;
+		}
 	}
 
 	/**

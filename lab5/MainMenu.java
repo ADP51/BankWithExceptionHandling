@@ -13,7 +13,8 @@ import java.util.Scanner;
  * This is the Main class which is used to give the user options and then call methods based upon the
  * user input. This class also contains the main method.
  *
- * @author Angela Giddings, Andrew Palmer
+ * @author Angela Giddings
+ * @author Andrew Palmer
  * @version 1.1
  * @see Bank
  */
@@ -76,6 +77,7 @@ public class MainMenu {
 	 */
 	public static void displayMenu() {
 
+		System.out.println("");
 		System.out.println("Enter your choice:");
 		System.out.println("a: Add new account");
 		System.out.println("d: Display account details");
@@ -83,6 +85,7 @@ public class MainMenu {
 		System.out.println("u: Update account balance");
 		System.out.println("m: Month-end update");
 		System.out.println("q: Quit");
+		System.out.println("");
 
 	}
 }

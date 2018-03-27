@@ -10,7 +10,8 @@ package lab5;
 /**
  * The Customer class is used to assign all customer information such as name, phone, and email.
  *
- * @author Angela Giddings, Andrew Palmer
+ * @author Angela Giddings
+ * @author Andrew Palmer
  * @version 1.1
  * @see BankAccount
  */

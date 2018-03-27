@@ -61,7 +61,7 @@ public class SavingsAccount extends BankAccount {
 			try {
 				double balance = scan.nextDouble();
 				if (balance < 5 || balance > 100) {
-					System.out.println("That is not an appropriate minimum balance.");
+					System.out.println("The minimum balance needs to be between 5 and 100$.");
 					return false;
 				} else {
 					minBalance = balance;
